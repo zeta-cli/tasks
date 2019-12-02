@@ -1,0 +1,40 @@
+{
+  "name": "@zeta-cli/ztk-hello-world",
+  "version": "1.0.0",
+  "description": "Zeta Task Hello World Example",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "deploy": "npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/zeta-cli/tasks.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/zeta-cli"
+  },
+  "keywords": [
+    "zeta",
+    "tasks",
+    "task",
+    "hello",
+    "world",
+    "example"
+  ],
+  "author": "Antonio Hermosilla",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/zeta-cli/tasks/issues"
+  },
+  "homepage": "https://github.com/zeta-cli/tasks#readme",
+  "devDependencies": {
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-javascript-obfuscator": "^1.1.6",
+    "vinyl-sourcemaps-apply": "^0.2.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-obfuscator": "^0.18.5"
+  }
+}
