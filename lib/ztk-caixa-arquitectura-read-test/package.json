@@ -1,0 +1,28 @@
+{
+  "name": "ztk-caixa-arquitectura-read-test",
+  "version": "1.0.0",
+  "description": "Caixa Arquitectura read test",
+  "main": "src/index",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hermosillaeveris/zeta-tasks.git"
+  },
+  "keywords": [
+    "zeta",
+    "tasks",
+    "ztk",
+    "caixa",
+    "arquitectura",
+    "read",
+    "test"
+  ],
+  "author": "Antonio Hermosilla",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/hermosillaeveris/zeta-tasks/issues"
+  },
+  "homepage": "https://github.com/hermosillaeveris/zeta-tasks#readme"
+}
