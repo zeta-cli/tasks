@@ -15,9 +15,15 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-function readTestFromDataSource() {
+/**
+ * Read test from sources.
+ * 
+ * @param {string} sourcePath Source path
+ */
+function readTestFromSource(sourcePath) {
 
-  console.log('read datasources');
+  // Use gulp to read source
+  console.log('readTestFromSource')
   
 }
 
@@ -25,4 +31,4 @@ function readTestFromDataSource() {
 
 
 
-exports.default = readTestFromDataSource;
+exports.default = readTestFromSource;

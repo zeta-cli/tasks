@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/hermosillaeveris/zeta-tasks/issues"
   },
-  "homepage": "https://github.com/hermosillaeveris/zeta-tasks#readme"
+  "homepage": "https://github.com/hermosillaeveris/zeta-tasks#readme",
+  "dependencies": {
+    "gulp": "^4.0.2"
+  }
 }
