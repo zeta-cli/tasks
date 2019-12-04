@@ -15,35 +15,29 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-// @Date: 2018.10.31
-// 
-// index.js
-const
-  path = require('path'),
-  fs = require('fs');
+const path = require('path');
+const fs = require('fs');
+const { readTest } = require('./read-test.task');
 
-module.exports = {
-  info: {
-    name: 'caixa-arquitectura',
-    description: 'Set of tasks associated with the caixa arquitectura project.',
-    tasks: {
-      'read-test': {
-        name: 'read-test',
-        params: {
-          type: 'object',
-          properties: {
-            source: { type: ['string', 'array'], description: 'Source code where the test files are located. You can use the gulp glob format.' },
-            output: { type: 'string', description: 'File for parsed test ouput' }
-          },
-          required: ['pattern', 'text'],
-          additionalProperties: false
-        }
-      }
-    },
-    doc: fs.readFileSync(path.join(__dirname, './../README.md')).toString()
-  },
+module.exports.info = {
+  name: 'caixa-arquitectura',
+  description: 'Set of tasks associated with the caixa arquitectura project.',
   tasks: {
-    'read-test': require('./tasks/test-reader.task').readTestFromSource,
-    'default': module.exports.tasks['read-test'],
-  }
+    readTest: {
+      name: 'readTest',
+      params: {
+        type: 'object',
+        properties: {
+          source: { type: ['string', 'array'], description: 'Source code where the test files are located. You can use the gulp glob format.' },
+          output: { type: 'string', description: 'File for parsed test ouput' }
+        },
+        required: ['pattern', 'text'],
+        additionalProperties: false
+      }
+    }
+  },
+  doc: fs.readFileSync(path.join(__dirname, './../README.md')).toString()
 };
+
+module.exports.readTest = readTest;
+module.exports.default = readTest;

@@ -18,7 +18,7 @@
 const gulp = require('gulp');
 const through2 = require('through2');
 const micro = require('@zeta-cli/z-microgrammar');
-const dataConverter = require('../data.converter');
+const dataConverter = require('./data.converter');
 
 const microgrammar = {
   tokens: {
@@ -44,23 +44,23 @@ const microgrammar = {
   }
 };
 
-module.exports = {
+const readTestTask = {
 
   /**
    * Read test from sources.
    *
-   * @param {string} sourcePath Source path
+   * @param {Object} context Execution context
+   * @param {{source: string}} params Parameters
    * @returns {Promise} Promise
    */
-  readTestFromSource(sourcePath) {
+  readTestFromSource(context, params) {
     return new Promise((resolve, reject) => {
       const parsedFiles = [];
-      gulp.src(sourcePath)
-        .pipe(module.exports.parseJavaTestFile(parsedFiles))
+      gulp.src(params.source)
+        .pipe(readTestTask.parseJavaTestFile(parsedFiles))
         .pipe(gulp.dest('./output')).on('end', () => {
           dataConverter(parsedFiles);
-          console.log(JSON.stringify(parsedFiles, null, 2));
-          resolve();
+          resolve(parsedFiles);
         });
     });
   },
@@ -70,15 +70,17 @@ module.exports = {
       if (!chunk.isDirectory() && chunk.contents) {
         const content = chunk.contents.toString('latin1');
         const parsedFile = micro.parser(chunk.path, content, microgrammar, null, { content: false, parent: true });
+
         parsedFiles.push(parsedFile);
         // var buffer = new Buffer.from(lines.join('\n').toString(), 'binary');
-        // file.contents = buffer;
+        // chunk.contents = buffer;
       }
-      cb(null); // Muy importante para no generar ficheros.
-      // cb(null, file);
+      cb(null); // Muy importante para no generar ficheros. Para generar: cb(null, chunk);
     });
-  },
+  }
+};
 
 
-
+module.exports = {
+  readTest: readTestTask.readTestFromSource
 };

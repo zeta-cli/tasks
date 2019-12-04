@@ -1,8 +1,11 @@
-const readTest = require('../src/index').default;
+const { readTest  } = require('../src/index');
 
 
-test('Java class code', (done) => {
-  readTest(`${process.cwd()}/assets/class/**/*.java`).then( result => {
+test('Testing read test task caixa-arquitectura:readTest', (done) => {
+
+  readTest({}, { source: `${process.cwd()}/assets/class/**/*.java` }).then( result => {
+    console.log(JSON.stringify(result, null, 2));
     done();
   });
+
 });
