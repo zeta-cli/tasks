@@ -1,0 +1,31 @@
+[
+  {
+    "name": "caixa-arquitectura",
+    "packageName": "@zeta-cli/ztk-caixa-arquitectura",
+    "version": "1.0.1",
+    "description": "Caixa Arquitectura read test",
+    "keywords": [
+      "zeta",
+      "tasks",
+      "ztk",
+      "caixa",
+      "arquitectura",
+      "read",
+      "test"
+    ]
+  },
+  {
+    "name": "hello-world",
+    "packageName": "@zeta-cli/ztk-hello-world",
+    "version": "1.0.0",
+    "description": "Zeta Task Hello World Example",
+    "keywords": [
+      "zeta",
+      "tasks",
+      "task",
+      "hello",
+      "world",
+      "example"
+    ]
+  }
+]

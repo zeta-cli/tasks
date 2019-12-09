@@ -29,12 +29,7 @@
   },
   "homepage": "https://github.com/zeta-cli/tasks#readme",
   "devDependencies": {
-    "del": "^5.1.0",
-    "gulp": "^4.0.2",
-    "gulp-javascript-obfuscator": "^1.1.6",
-    "vinyl-sourcemaps-apply": "^0.2.1",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10",
-    "webpack-obfuscator": "^0.18.5"
+    "@zeta-cli/z-cli-tools": "^1.0.0",
+    "gulp": "^4.0.2"
   }
 }
