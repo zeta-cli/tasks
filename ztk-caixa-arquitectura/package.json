@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/hermosillaeveris/zeta-tasks#readme",
   "dependencies": {
+    "@zeta-cli/z-docxtemplater": "^1.0.0",
     "@zeta-cli/z-microgrammar": "^1.0.1",
     "gulp": "^4.0.2"
   }

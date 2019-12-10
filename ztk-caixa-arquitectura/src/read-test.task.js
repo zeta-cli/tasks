@@ -26,7 +26,7 @@ const microgrammar = {
     import: { pattern: /import\s*(static)?\s*(.*);/, fragments: ['modifier', 'name'] },
     class: { pattern: /(public|private|protected)\s*class\s*(\w*)\s*\{/, fragments: ['modifier', 'name'] },
     test: {
-      pattern: /(\/\*\*[^\/]*\/)\s*(@Test.*)\s*(public|private|protected)\s*([^\(]*)\(([^\)]*)\)\s*{/, fragments: [
+      pattern: /(\/\*\*[^\/]*\/)\s*(@Test.*)\s*(public|private|protected)\s*([^\(]*)\(([^\)]*)\)\s*{/, balanced: '{', end: '}', fragments: [
         {
           pattern: /(\/\*\*[^\/]*\/)\s*/, fragments: [
             { name: 'historia', pattern: /@Historia\s*\(([^)]*)/, fragments: ['value'] },
@@ -69,8 +69,8 @@ const readTestTask = {
     return through2.obj((chunk, enc, cb) => {
       if (!chunk.isDirectory() && chunk.contents) {
         const content = chunk.contents.toString('latin1');
-        const parsedFile = micro.parser(chunk.path, content, microgrammar, null, { content: false, parent: true });
-
+        const parsedFile = micro.parser(chunk.path, content, microgrammar, null, { content: true, parent: true });
+        
         parsedFiles.push(parsedFile);
         // var buffer = new Buffer.from(lines.join('\n').toString(), 'binary');
         // chunk.contents = buffer;

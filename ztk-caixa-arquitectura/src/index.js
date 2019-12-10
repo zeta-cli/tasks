@@ -18,6 +18,7 @@
 const path = require('path');
 const fs = require('fs');
 const { readTest } = require('./read-test.task');
+const { generateDoc } = require('./generate-doc.task');
 
 module.exports.info = {
   name: 'caixa-arquitectura',
@@ -39,5 +40,6 @@ module.exports.info = {
   doc: fs.readFileSync(path.join(__dirname, './../README.md')).toString()
 };
 
+module.exports.generateDoc = generateDoc;
 module.exports.readTest = readTest;
-module.exports.default = readTest;
+module.exports.default = generateDoc;

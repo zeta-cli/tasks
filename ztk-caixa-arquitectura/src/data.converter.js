@@ -52,12 +52,17 @@ module.exports = data => {
     return declaration.split(' ').pop();
   }
 
+  function getContentFormatted(content) {
+    return content.join('\n').replace(/ * /g, '\n * ');
+  }
+
   return data.map(d => {
     if (d.id && d.childs) {
       d.childs.map(c => {
         if (c.id === 'test') {
           c.return = getReturnFromDeclaration(c.declaration);
           c.methodName = getMethodNameFromDeclaration(c.declaration);
+          c.content = getContentFormatted(c._content);
           updateSimpleValue(c);
         }
       });
