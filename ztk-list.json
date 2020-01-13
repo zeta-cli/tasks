@@ -18,7 +18,7 @@
     "name": "hello-world",
     "packageName": "@zeta-cli/ztk-hello-world",
     "version": "1.0.0",
-    "description": "Zeta Task Hello World Example",
+    "description": "Hello World Example",
     "keywords": [
       "zeta",
       "tasks",
