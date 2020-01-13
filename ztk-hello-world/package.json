@@ -1,7 +1,7 @@
 {
   "name": "@zeta-cli/ztk-hello-world",
   "version": "1.0.0",
-  "description": "Zeta Task Hello World Example",
+  "description": "Hello World Example",
   "main": "src/index.js",
   "scripts": {
     "test": "jest",
