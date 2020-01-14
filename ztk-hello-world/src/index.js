@@ -23,10 +23,18 @@ module.exports.info = {
   description: 'Hello world example task.',
   tasks: {
     default: {
-      name: 'default'
+      name: 'default',
+      params: {
+        type: 'object',
+        properties: {
+          name: { type: ['string', 'array'], description: 'Name to show in message.' }
+        },
+        required: [],
+        additionalProperties: false
+      }
     }
   },
   doc: fs.readFileSync(path.join(__dirname, './../README.md')).toString()
 };
 
-module.exports.default = () => { console.log('Hello world !!'); };
+module.exports.default = (options) => { console.log(`Hello ${options.name ? options.name : 'world'} !!`); };
