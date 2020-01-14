@@ -4,11 +4,15 @@
   "description": "Caixa Arquitectura read test",
   "main": "src/index",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "deploy": "npm publish"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hermosillaeveris/zeta-tasks.git"
+    "url": "git+ssh://git@github.com/zeta-cli/tasks.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/zeta-cli"
   },
   "keywords": [
     "zeta",
@@ -22,9 +26,9 @@
   "author": "Antonio Hermosilla",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/hermosillaeveris/zeta-tasks/issues"
+    "url": "https://github.com/zeta-cli/tasks/issues"
   },
-  "homepage": "https://github.com/hermosillaeveris/zeta-tasks#readme",
+  "homepage": "https://github.com/zeta-cli/tasks#readme",
   "dependencies": {
     "@zeta-cli/z-docxtemplater": "^1.1.1",
     "@zeta-cli/z-html-image-capture": "^1.0.3",
