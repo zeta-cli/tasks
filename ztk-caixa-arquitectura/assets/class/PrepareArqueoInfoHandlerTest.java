@@ -54,7 +54,7 @@ public class PrepareArqueoInfoHandlerTest {
 	 * @Historia (F-002)
 	 * @Criterio (1)
 	 * @Caso_de_prueba (Si el profile viene nulo no se ejecuta el seteo de cabeceras)
-	 * @Descripcion (Se verifica que si el profile viene nulo las cabeceras no ser·n ejecutadas)
+	 * @Descripcion (Se verifica que si el profile viene nulo las cabeceras no ser√°n ejecutadas)
 	 * @Estado (Ok)
 	 */
 	@Test
@@ -82,7 +82,7 @@ public class PrepareArqueoInfoHandlerTest {
 	 * @Historia (F-002)
 	 * @Criterio (1)
 	 * @Caso_de_prueba (Si el canal no tiene permitido ejecutar el seteo de cabeceras)
-	 * @Descripcion (Se verifica que si el canal no est· permitido el seteo de cabeceras)
+	 * @Descripcion (Se verifica que si el canal no est√° permitido el seteo de cabeceras)
 	 * @Estado (Ok)
 	 */
 	@Test

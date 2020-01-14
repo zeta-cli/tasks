@@ -51,7 +51,7 @@ public class ArqueoDataImplTest {
 	}
 
 	/**
-	 * @Historia (F-002)
+	 * @Historia (F-001)
 	 * @Criterio (1)
 	 * @Caso_de_prueba (Si el profile es nulo se debe devolver un NullPointerException)
 	 * @Descripcion (Se verifica que si el profile es nulo se debe devolver un NullPointerException.)
@@ -66,8 +66,8 @@ public class ArqueoDataImplTest {
 	/**
 	 * @Historia (F-002)
 	 * @Criterio (1)
-	 * @Caso_de_prueba (Si el profile contiene un mapa pero este está vacío, no se pasará ningún dato a las cabeceras)
-	 * @Descripcion (Se verifica que Si el profile contiene un mapa pero este está vacío, no se pasará ningún dato a las cabeceras.)
+	 * @Caso_de_prueba (Si el profile contiene un mapa pero este estÃ¡ vacÃ­o, no se pasarÃ¡ ningÃºn dato a las cabeceras)
+	 * @Descripcion (Se verifica que Si el profile contiene un mapa pero este estÃ¡ vacÃ­o, no se pasarÃ¡ ningÃºn dato a las cabeceras.)
 	 * @Estado (Ok)
 	 */
 	@Test
@@ -80,8 +80,8 @@ public class ArqueoDataImplTest {
 	/**
 	 * @Historia (F-002)
 	 * @Criterio (1)
-	 * @Caso_de_prueba (Si el profile contiene un mapa con un único elemento, la cabecera contra ese único valor)
-	 * @Descripcion (Se verifica que si el profile contiene un mapa con un único elemento, la cabecera contra ese único valor.)
+	 * @Caso_de_prueba (Si el profile contiene un mapa con un Ãºnico elemento, la cabecera contra ese Ãºnico valor)
+	 * @Descripcion (Se verifica que si el profile contiene un mapa con un Ãºnico elemento, la cabecera contra ese Ãºnico valor.)
 	 * @Estado (Ok)
 	 */
 	@Test
@@ -96,8 +96,8 @@ public class ArqueoDataImplTest {
 	/**
 	 * @Historia (F-002)
 	 * @Criterio (1)
-	 * @Caso_de_prueba (Si el profile contiene un mapa con varios elementos la cabecera contendrá todos los valores)
-	 * @Descripcion (Se verifica que si el profile contiene un mapa con varios elementos, la cabecera contendrá todos los valores.)
+	 * @Caso_de_prueba (Si el profile contiene un mapa con varios elementos la cabecera contendrÃ¡ todos los valores)
+	 * @Descripcion (Se verifica que si el profile contiene un mapa con varios elementos, la cabecera contendrÃ¡ todos los valores.)
 	 * @Estado (Ok)
 	 */
 	@Test

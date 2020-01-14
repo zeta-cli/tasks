@@ -50,13 +50,13 @@ const readTestTask = {
    * Read test from sources.
    *
    * @param {Object} context Execution context
-   * @param {{source: string}} params Parameters
+   * @param {{sources: string|Array}} params Parameters
    * @returns {Promise} Promise
    */
   readTestFromSource(context, params) {
     return new Promise((resolve, reject) => {
       const parsedFiles = [];
-      gulp.src(params.source)
+      gulp.src(params.sources)
         .pipe(readTestTask.parseJavaTestFile(parsedFiles))
         .pipe(gulp.dest('./output')).on('end', () => {
           dataConverter(parsedFiles);
@@ -68,7 +68,7 @@ const readTestTask = {
   parseJavaTestFile(parsedFiles) {
     return through2.obj((chunk, enc, cb) => {
       if (!chunk.isDirectory() && chunk.contents) {
-        const content = chunk.contents.toString('latin1');
+        const content = chunk.contents.toString();
         const parsedFile = micro.parser(chunk.path, content, microgrammar, null, { content: true, parent: true });
         
         parsedFiles.push(parsedFile);
