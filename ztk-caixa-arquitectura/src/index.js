@@ -35,7 +35,7 @@ const _generateDoc = {
           type: 'object',
           properties: {
             name: { type: 'string' },
-            paths: { type: 'array', items: { type: 'string' } },
+            paths: { type: ['array', 'string'], items: { type: 'string' } },
           },
           required: ['name', 'paths']
         }

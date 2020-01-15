@@ -8,15 +8,28 @@ test('Testing generate doc task caixa-arquitectura:generateDoc', async (done) =>
 
   // --scopes-name MCA --scopes-paths path1,path2 --scopes-name BCK --scopes-paths path1,path2 --template assets/docs/uat_template.docx --output assets/output.docx
 
-  const options = {
+  const options =
+  {
     scopes: [
-      { name: 'MCA', paths: [`${process.cwd()}/assets/class/**/*`] },
+      { name: 'MCA', paths: `${process.cwd()}/assets/class/**/*` },
 
     ],
     template: `${process.cwd()}/assets/docs/uat_template.docx`,
     output: `${process.cwd()}/assets/output.docx`,
     imageOutput: `${process.cwd()}/assets/images`,
   };
+
+  // {
+  //   "scopes": [
+  //     {
+  //       "name": "BCA",
+  //       "paths": "C:\\Users\\ahermosi\\development\\zeta\\tasks\\ztk-caixa-arquitectura\\assets\\class\\**\\*"
+  //     }
+  //   ],
+  //   "template": "C:\\Users\\ahermosi\\development\\zeta\\tasks\\ztk-caixa-arquitectura\\assets\\docs\\uat_template.docx",
+  //   "output": "output/test.docx",
+  //   "outputImage": "output/images"
+  // };
 
   console.log(JSON.stringify(options));
 
