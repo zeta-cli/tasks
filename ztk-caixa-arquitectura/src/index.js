@@ -17,15 +17,42 @@
 
 const path = require('path');
 const fs = require('fs');
-const { readTest } = require('./read-test.task');
-const { generateDoc } = require('./generate-doc.task');
+const { readTest } = require('./tasks/read-test.task');
+const { generateDoc } = require('./tasks/generate-doc.task');
 
 module.exports.info = {
   name: 'caixa-arquitectura',
   description: 'Set of tasks associated with the caixa arquitectura project.',
   tasks: {
+    generateDoc: {
+      name: 'generateDoc',
+      description: 'Generate testing documentation from a list of Java files using a world template',
+      params: {
+        type: 'object',
+        properties: {
+          scopes: {
+            type: 'array',
+            description: 'Scope list',
+            items: {
+              type: 'object',
+              properties: {
+                name: { type: 'string' },
+                paths: { type: 'array', items: { type: 'string' } },
+              },
+              required: ['name', 'paths']
+            }
+          },
+          template: { type: 'string', description: 'Path to template' },
+          output: { type: 'string', description: 'Path to output file' },
+          outputImage: { type: 'string', description: 'Path to output image files' }
+        },
+        required: ['scopes', 'template', 'output', 'outputImage'],
+        additionalProperties: false
+      }
+    },
     readTest: {
       name: 'readTest',
+      description: 'Generate a json from parsed test classes',
       params: {
         type: 'object',
         properties: {

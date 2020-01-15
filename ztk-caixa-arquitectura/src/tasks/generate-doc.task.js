@@ -18,7 +18,7 @@ const { docxtemplater } = require('@zeta-cli/z-docxtemplater');
 const { readTest } = require('./read-test.task');
 const path = require('path');
 const htmlImageCapture = require('@zeta-cli/z-html-image-capture');
-const eclipseUnitTestGenerator = require('./eclipse-unit-test.generator');
+const eclipseUnitTestGenerator = require('../eclipse-unit-test.generator');
 
 const generateDocTask = {
 
@@ -29,7 +29,7 @@ const generateDocTask = {
    * zeta-cli task run caixa-arquitectura:generateDoc --scopes-name MCA --scopes-paths path1,path2 --scopes-name MCA --scopes-paths path1,path2 --template assets/docs/uat_template.docx --output assets/output.docx --imageOutput assets/images
    * 
    * @param {Object} context Execution context
-   * @param {{scopes: Array, template: string, output: string, imageOutput: string}} params Parameters
+   * @param {{scopes: Array, template: string, output: string, outputImage: string}} params Parameters
    * @returns {Promise} Promise data { file: outputFilePath }
    */
   async generateDoc(context, params) {
@@ -41,8 +41,8 @@ const generateDocTask = {
     // console.log(JSON.stringify(data, null, 2));
 
     // Generate images from tests
-    // await generateDocTask._generateCodeImagesFromTest(data.test, params.imageOutput);
-    await generateDocTask._generateJUnitImagesFromTest(data.scopes, params.imageOutput);
+    await generateDocTask._generateCodeImagesFromTest(data.test, params.outputImage);
+    await generateDocTask._generateJUnitImagesFromTest(data.scopes, params.outputImage);
 
     return docxtemplater(data, params.template, params.output);
   },
@@ -99,17 +99,17 @@ const generateDocTask = {
   async _generateJUnitImagesFromTest(scopes, imageOutputPath) {
     const imagesPromises = [];
     scopes.forEach(scope => {
-      console.log(JSON.stringify(scope, null, 2));
-      scope.test.forEach(t => {
-
+      //console.log(JSON.stringify(scope, null, 2));
+      scope.test.forEach((t, i) => {
+        t.imageEclipseJUnit = path.join(imageOutputPath, `junit-image-${scope.name}-${i}.png`);
+        imagesPromises.push(htmlImageCapture.capturaFromHtml(
+          t.imageEclipseJUnit,
+          eclipseUnitTestGenerator.getHtmlTemplate(scope.test),
+          { pageViewPort: { width: 746, height: 50 } }
+        ));
       });
-      // scope.image = path.join(imageOutputPath, `image-junit-${t.tIndex}.png`);
-      // imagesPromises.push(htmlImageCapture.capturaFromHtml(
-      //   t.image,
-      //   eclipseUnitTestGenerator.generate(),
-      //   { pageViewPort: { width: 746, height: 50 } }
-      // ));
     });
+
     return Promise.all(imagesPromises);
   },
 

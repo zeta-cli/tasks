@@ -18,7 +18,7 @@
 const gulp = require('gulp');
 const through2 = require('through2');
 const micro = require('@zeta-cli/z-microgrammar');
-const dataConverter = require('./data.converter');
+const dataConverter = require('../data.converter');
 
 const microgrammar = {
   tokens: {
@@ -70,7 +70,7 @@ const readTestTask = {
       if (!chunk.isDirectory() && chunk.contents) {
         const content = chunk.contents.toString();
         const parsedFile = micro.parser(chunk.path, content, microgrammar, null, { content: true, parent: true });
-        
+
         parsedFiles.push(parsedFile);
         // var buffer = new Buffer.from(lines.join('\n').toString(), 'binary');
         // chunk.contents = buffer;

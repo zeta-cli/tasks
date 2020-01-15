@@ -17,11 +17,25 @@
 
 module.exports = {
 
-  generate() {
-    return this._getFromTemplate();
+  getHtmlTemplate(test) {
+    return this._getFromTemplate(test);
   },
 
-  _getFromTemplate() {
+  /**
+   * Get html from template.
+   * 
+   * @param {Array} test Test list
+   */
+  _getFromTemplate(test) {
+    const htmlText = [];
+    let totalTime = 0;
+    test.forEach(t => {
+      if (!t.time) { t.time = Math.floor((Math.random() * 9) + 1); }
+      htmlText.push(`<div class="unit">${t.methodName} <span class="time">(0.00${t.time} s)</span></div>`);
+      totalTime += t.time;
+    });
+
+
     return `
     <!DOCTYPE html>
     <html>
@@ -56,8 +70,8 @@ module.exports = {
 
     <body>
       <div class="eclipse">
-        <div class="finished">Finished after <span class="seconds">0.000</span> seconds</div>
-        <div class="runs">1/1</div>
+        <div class="finished">Finished after <span class="seconds">0.0${totalTime}</span> seconds</div>
+        <div class="runs">${test.length}/${test.length}</div>
         <div class="errors">0</div>
         <div class="failures">0</div>
         <div class="trace">Failure Trace</div>
@@ -65,7 +79,7 @@ module.exports = {
       </div>
       <div class="test">
       <div class="wrapper">
-        <div class="unit">no_nothing_test <span class="time">(0.000 s)</span></div>
+        ${htmlText.join('\n')}
       </div>
       </div>
     </body>
