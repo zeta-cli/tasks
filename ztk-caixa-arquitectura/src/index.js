@@ -20,49 +20,57 @@ const fs = require('fs');
 const { readTest } = require('./tasks/read-test.task');
 const { generateDoc } = require('./tasks/generate-doc.task');
 
+// Generate Doc JSON Schema
+
+const _generateDoc = {
+  name: 'generateDoc',
+  description: 'Generate testing documentation from a list of Java files using a world template',
+  params: {
+    type: 'object',
+    properties: {
+      scopes: {
+        type: 'array',
+        description: 'Scope list',
+        items: {
+          type: 'object',
+          properties: {
+            name: { type: 'string' },
+            paths: { type: 'array', items: { type: 'string' } },
+          },
+          required: ['name', 'paths']
+        }
+      },
+      template: { type: 'string', description: 'Path to template' },
+      output: { type: 'string', description: 'Path to output file' },
+      outputImage: { type: 'string', description: 'Path to output image files' }
+    },
+    required: ['scopes', 'template', 'output', 'outputImage'],
+    additionalProperties: false
+  }
+};
+
+// Read Test JSON Schema
+const _readTest = {
+  name: 'readTest',
+  description: 'Generate a json from parsed test classes',
+  params: {
+    type: 'object',
+    properties: {
+      source: { type: ['string', 'array'], description: 'Source code where the test files are located. You can use the gulp glob format.' },
+      output: { type: 'string', description: 'File for parsed test ouput' }
+    },
+    required: ['pattern', 'text'],
+    additionalProperties: false
+  }
+};
+
 module.exports.info = {
   name: 'caixa-arquitectura',
   description: 'Set of tasks associated with the caixa arquitectura project.',
   tasks: {
-    generateDoc: {
-      name: 'generateDoc',
-      description: 'Generate testing documentation from a list of Java files using a world template',
-      params: {
-        type: 'object',
-        properties: {
-          scopes: {
-            type: 'array',
-            description: 'Scope list',
-            items: {
-              type: 'object',
-              properties: {
-                name: { type: 'string' },
-                paths: { type: 'array', items: { type: 'string' } },
-              },
-              required: ['name', 'paths']
-            }
-          },
-          template: { type: 'string', description: 'Path to template' },
-          output: { type: 'string', description: 'Path to output file' },
-          outputImage: { type: 'string', description: 'Path to output image files' }
-        },
-        required: ['scopes', 'template', 'output', 'outputImage'],
-        additionalProperties: false
-      }
-    },
-    readTest: {
-      name: 'readTest',
-      description: 'Generate a json from parsed test classes',
-      params: {
-        type: 'object',
-        properties: {
-          source: { type: ['string', 'array'], description: 'Source code where the test files are located. You can use the gulp glob format.' },
-          output: { type: 'string', description: 'File for parsed test ouput' }
-        },
-        required: ['pattern', 'text'],
-        additionalProperties: false
-      }
-    }
+    default: _generateDoc,
+    generateDoc: _generateDoc,
+    readTest: _readTest
   },
   doc: fs.readFileSync(path.join(__dirname, './../README.md')).toString()
 };

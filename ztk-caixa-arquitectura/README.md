@@ -1,4 +1,4 @@
-# caixa-arquitectura Tasks v1.0.0
+# caixa-arquitectura Tasks v1.0.5
   
   Set of tasks associated with the caixa arquitectura project.
   
