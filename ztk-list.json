@@ -2,8 +2,8 @@
   {
     "name": "hello-world",
     "packageName": "@zeta-cli/ztk-hello-world",
-    "version": "1.0.3",
-    "description": "Hello World Example ",
+    "version": "1.0.4",
+    "description": "Hello World Example",
     "keywords": [
       "zeta",
       "tasks",
@@ -16,8 +16,8 @@
   {
     "name": "caixa-arquitectura",
     "packageName": "@zeta-cli/ztk-caixa-arquitectura",
-    "version": "1.0.6",
-    "description": "Caixa Arquitectura Package Task",
+    "version": "1.0.7",
+    "description": "Caixa Arquitectura package",
     "keywords": [
       "zeta",
       "tasks",

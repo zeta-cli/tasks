@@ -37,4 +37,4 @@ module.exports.info = {
   doc: fs.readFileSync(path.join(__dirname, './../README.md')).toString()
 };
 
-module.exports.default = (options) => { console.log(`Hello ${options.name ? options.name : 'world'} !!`); };
+module.exports.default = (context, options) => { console.log(`Hello ${options.name ? options.name : 'world'} !!`); };
