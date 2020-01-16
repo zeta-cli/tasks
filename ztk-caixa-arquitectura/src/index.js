@@ -42,7 +42,8 @@ const _generateDoc = {
       },
       template: { type: 'string', description: 'Path to template' },
       output: { type: 'string', description: 'Path to output file' },
-      outputImage: { type: 'string', description: 'Path to output image files' }
+      outputImage: { type: 'string', description: 'Path to output image files' },
+      verbose: { type: 'boolean', description: 'Show info on console' }
     },
     required: ['scopes', 'template', 'output', 'outputImage'],
     additionalProperties: false
@@ -56,10 +57,11 @@ const _readTest = {
   params: {
     type: 'object',
     properties: {
-      source: { type: ['string', 'array'], description: 'Source code where the test files are located. You can use the gulp glob format.' },
-      output: { type: 'string', description: 'File for parsed test ouput' }
+      paths: { type: ['string', 'array'], description: 'Source code where the test files are located. You can use the gulp glob format.' },
+      output: { type: 'string', description: 'File for parsed test ouput' },
+      verbose: { type: 'boolean', description: 'Show output on console' }
     },
-    required: ['pattern', 'text'],
+    required: ['paths'],
     additionalProperties: false
   }
 };

@@ -1,5 +1,20 @@
 [
   {
+    "name": "caixa-arquitectura",
+    "packageName": "@zeta-cli/ztk-caixa-arquitectura",
+    "version": "1.0.8",
+    "description": "Caixa Arquitectura package",
+    "keywords": [
+      "zeta",
+      "tasks",
+      "ztk",
+      "caixa",
+      "arquitectura",
+      "read",
+      "test"
+    ]
+  },
+  {
     "name": "hello-world",
     "packageName": "@zeta-cli/ztk-hello-world",
     "version": "1.0.4",
@@ -11,21 +26,6 @@
       "hello",
       "world",
       "example"
-    ]
-  },
-  {
-    "name": "caixa-arquitectura",
-    "packageName": "@zeta-cli/ztk-caixa-arquitectura",
-    "version": "1.0.7",
-    "description": "Caixa Arquitectura package",
-    "keywords": [
-      "zeta",
-      "tasks",
-      "ztk",
-      "caixa",
-      "arquitectura",
-      "read",
-      "test"
     ]
   }
 ]

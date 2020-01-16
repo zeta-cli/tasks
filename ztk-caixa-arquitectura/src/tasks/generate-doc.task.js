@@ -29,16 +29,16 @@ const generateDocTask = {
    * zeta-cli task run caixa-arquitectura:generateDoc --scopes-name MCA --scopes-paths path1,path2 --scopes-name MCA --scopes-paths path1,path2 --template assets/docs/uat_template.docx --output assets/output.docx --imageOutput assets/images
    * 
    * @param {Object} context Execution context
-   * @param {{scopes: Array, template: string, output: string, outputImage: string}} params Parameters
+   * @param {{scopes: Array, template: string, output: string, outputImage: string, verbose?: boolean}} params Parameters
    * @returns {Promise} Promise data { file: outputFilePath }
    */
   async generateDoc(context, params) {
     // Get scopes with test
     const scopes = await generateDocTask._readTestFromScopes(params.scopes);
 
-    // console.log(JSON.stringify(scopes, null, 2));
+    // Trans
     const data = generateDocTask._getDataFromScopes(scopes);
-    // console.log(JSON.stringify(data, null, 2));
+    if (params.verbose) { console.log(JSON.stringify(data, null, 2)); }
 
     // Generate images from tests
     await generateDocTask._generateCodeImagesFromTest(data.test, params.outputImage);
@@ -62,7 +62,7 @@ const generateDocTask = {
     }
 
     // Add to scopes.test AST from source (scopes.test)
-    await Promise.all(completedScopes.map(scope => (async () => { scope.test = await readTest({}, { sources: scope.paths }) })()));
+    await Promise.all(completedScopes.map(scope => (async () => { scope.test = await readTest({}, { paths: scope.paths }) })()));
     completedScopes.forEach(scope => { scope.test = generateDocTask._getTestFromAst(scope.test) });
 
     return completedScopes;

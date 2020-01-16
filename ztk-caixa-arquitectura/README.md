@@ -35,6 +35,12 @@ To generate a doc-test-docx file with the existing source code in C:\project\cai
 z task run caixa-arquitectura --scopes-0-name "MCA" --scopes-0-paths  "C:\project\caixa\src\**\*" --template "C:\project\caixa\template\uat_template.docx" --output "C:\project\caixa\template\output\doc-test.docx" --outputImage "C:\project\caixa\template\output\images"
 ```
 
+To parse java test files:
+
+```bash
+z task run caixa-arquitectura.readTest --paths "C:\project\caixa\src\**\*" --output "C:\parsed_output.json" --verbose true
+```
+
 ## Authors
 
 * **Antonio Hermosilla**

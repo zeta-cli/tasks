@@ -19,6 +19,7 @@ const gulp = require('gulp');
 const through2 = require('through2');
 const micro = require('@zeta-cli/z-microgrammar');
 const dataConverter = require('../data.converter');
+const fs = require('fs').promises;
 
 const microgrammar = {
   tokens: {
@@ -50,16 +51,18 @@ const readTestTask = {
    * Read test from sources.
    *
    * @param {Object} context Execution context
-   * @param {{sources: string|Array}} params Parameters
+   * @param {{paths: string|Array, output?: string, verbose?: boolean}} params Parameters
    * @returns {Promise} Promise
    */
   readTestFromSource(context, params) {
     return new Promise((resolve, reject) => {
       const parsedFiles = [];
-      gulp.src(params.sources)
+      gulp.src(params.paths)
         .pipe(readTestTask.parseJavaTestFile(parsedFiles))
-        .pipe(gulp.dest('./output')).on('end', () => {
+        .pipe(gulp.dest('./no_ouput')).on('end', async () => {
           dataConverter(parsedFiles);
+          if (params.output) { await fs.writeFile(params.output, JSON.stringify(parsedFiles, null, 2)); }
+          if (params.verbose) { console.log(JSON.stringify(parsedFiles, null, 2)); }
           resolve(parsedFiles);
         });
     });

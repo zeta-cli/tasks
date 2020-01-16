@@ -1,6 +1,6 @@
 {
   "name": "@zeta-cli/ztk-caixa-arquitectura",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Caixa Arquitectura package",
   "main": "src/index",
   "scripts": {

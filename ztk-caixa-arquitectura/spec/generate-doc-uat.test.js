@@ -16,7 +16,8 @@ test('Testing generate doc task caixa-arquitectura:generateDoc', async (done) =>
     ],
     template: `${process.cwd()}/assets/docs/uat_template.docx`,
     output: `${process.cwd()}/assets/output.docx`,
-    imageOutput: `${process.cwd()}/assets/images`,
+    outputImage: `${process.cwd()}/assets/images`,
+    verbose: true
   };
 
   // {
@@ -30,8 +31,6 @@ test('Testing generate doc task caixa-arquitectura:generateDoc', async (done) =>
   //   "output": "output/test.docx",
   //   "outputImage": "output/images"
   // };
-
-  console.log(JSON.stringify(options));
 
   await generateDoc({}, options);
 
