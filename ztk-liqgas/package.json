@@ -1,7 +1,7 @@
 {
-  "name": "@zeta-cli/ztk-hello-world",
-  "version": "1.0.4",
-  "description": "Hello World Example",
+  "name": "@zeta-cli/ztk-liqgas",
+  "version": "1.0.0",
+  "description": "Zeta package for LiqGas",
   "main": "src/index.js",
   "scripts": {
     "test": "jest",
@@ -18,9 +18,7 @@
     "zeta",
     "tasks",
     "task",
-    "hello",
-    "world",
-    "example"
+    "liqgas"
   ],
   "author": "Antonio Hermosilla",
   "license": "GPL-3.0",
@@ -29,7 +27,11 @@
   },
   "homepage": "https://github.com/zeta-cli/tasks#readme",
   "devDependencies": {
-    "@zeta-cli/z-cli-tools": "^1.0.0",
+    "@zeta-cli/z-cli-tools": "^1.0.2",
     "gulp": "^4.0.2"
+  },
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "lodash": "^4.17.15"
   }
 }
