@@ -27,7 +27,7 @@ const microgrammar = {
     import: { pattern: /import\s*(static)?\s*(.*);/, fragments: ['modifier', 'name'] },
     class: { pattern: /(public|private|protected)\s*class\s*(\w*)\s*\{/, fragments: ['modifier', 'name'] },
     test: {
-      pattern: /(\/\*\*[^\/]*\/)\s*(@Test.*)\s*(public|private|protected)\s*([^\(]*)\(([^\)]*)\)\s*{/, balanced: '{', end: '}', fragments: [
+      pattern: /(\/\*\*[^\/]*\/)\s*(@Test.*)\s*(public|private|protected)\s*([^\(]*)\(([^\)]*)\)\s*([^{]*){/, balanced: '{', end: '}', fragments: [
         {
           pattern: /(\/\*\*[^\/]*\/)\s*/, fragments: [
             { name: 'historia', pattern: /@Historia\s*\(([^)]*)/, fragments: ['value'] },
