@@ -2,7 +2,7 @@
   {
     "name": "caixa-arquitectura",
     "packageName": "@zeta-cli/ztk-caixa-arquitectura",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "Caixa Arquitectura package",
     "keywords": [
       "zeta",
