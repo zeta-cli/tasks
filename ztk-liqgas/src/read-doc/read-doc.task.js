@@ -23,25 +23,8 @@ const fs = require('fs').promises;
 
 const microgrammar = {
   tokens: {
-    package: { pattern: /package\s*(.*);/, fragments: ['name'] },
-    import: { pattern: /import\s*(static)?\s*(.*);/, fragments: ['modifier', 'name'] },
-    class: { pattern: /(public|private|protected)\s*class\s*(\w*)\s*\{/, fragments: ['modifier', 'name'] },
-    test: {
-      pattern: /(\/\*\*[^\/]*\/)\s*(@Test.*)\s*(public|private|protected)\s*([^\(]*)\(([^\)]*)\)\s*([^{]*){/, balanced: '{', end: '}', fragments: [
-        {
-          pattern: /(\/\*\*[^\/]*\/)\s*/, fragments: [
-            { name: 'historia', pattern: /@Historia\s*\(([^)]*)/, fragments: ['value'] },
-            { name: 'criterio', pattern: /@Criterio\s*\(([^)]*)/, fragments: ['value'] },
-            { name: 'caso_de_prueba', pattern: /@Caso_de_prueba\s*\(([^)]*)/, fragments: ['value'] },
-            { name: 'descripcion', pattern: /@Descripcion\s*\(([^)]*)/, fragments: ['value'] },
-            { name: 'estado', pattern: /@Estado\s*\(([^)]*)/, fragments: ['value'] }
-          ]
-        },
-        'annotation',
-        'modifier',
-        'declaration'
-      ]
-    },
+    class: { pattern: /class\s*(\w*)\s*(:)\s*("""([^"]*)""")/, fragments: ['name', , , 'doc'] },
+    function: { pattern: /def\s*(\w*)([^:]*)[^\w]*("""([^"]*)""")/, fragments: ['name', , , 'doc'] }
   }
 };
 
@@ -58,9 +41,9 @@ const task = {
     return new Promise((resolve, reject) => {
       const parsedFiles = [];
       gulp.src(params.paths)
-        // .pipe(readTestTask.parseJavaTestFile(parsedFiles))
+        .pipe(task.parsePythonDoc(parsedFiles))
         .pipe(gulp.dest('./no_ouput')).on('end', async () => {
-          dataConverter(parsedFiles);
+          // dataConverter(parsedFiles);
           if (params.output) { await fs.writeFile(params.output, JSON.stringify(parsedFiles, null, 2)); }
           if (params.verbose) { console.log(JSON.stringify(parsedFiles, null, 2)); }
           resolve(parsedFiles);
@@ -68,7 +51,7 @@ const task = {
     });
   },
 
-  parseJavaTestFile(parsedFiles) {
+  parsePythonDoc(parsedFiles) {
     return through2.obj((chunk, enc, cb) => {
       if (!chunk.isDirectory() && chunk.contents) {
         const content = chunk.contents.toString();
