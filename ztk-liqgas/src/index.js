@@ -19,8 +19,6 @@ const path = require('path');
 const fs = require('fs');
 const { ZetaPackage } = require('@zeta-cli/z-cli-tools');
 
-const jsonToModel = require('./tasks/json-to-model.task');
-
 /**
  * LiqGas Zeta Package Definition
  */
@@ -29,11 +27,26 @@ module.exports = new ZetaPackage(
     name: 'liqgas',
     description: 'Set of tasks associated with the LiqGas project.',
     tasks: [
-      { name: 'jsonToModel', description: 'Create python model from JSON files'}
+      { name: 'jsonToModel', description: 'Create python model from JSON files' },
+      {
+        name: 'readDoc',
+        description: 'Read python doc',
+        params: {
+          type: 'object',
+          properties: {
+            paths: { type: ['string', 'array'], description: 'Source code to documentation.' },
+            output: { type: 'string', description: 'Json file ouput' },
+            verbose: { type: 'boolean', description: 'Show output on console' }
+          },
+          required: ['paths'],
+          additionalProperties: false
+        }
+      }
     ],
     doc: fs.readFileSync(path.join(__dirname, './../README.md')).toString()
   },
   {
-    jsonToModel: jsonToModel
+    // jsonToModel: jsonToModel,
+    readDoc: require('./read-doc/read-doc.task').readDoc
   }
 );
