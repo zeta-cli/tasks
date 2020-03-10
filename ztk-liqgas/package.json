@@ -1,6 +1,6 @@
 {
   "name": "@zeta-cli/ztk-liqgas",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Zeta package for LiqGas",
   "main": "src/index.js",
   "scripts": {
@@ -27,11 +27,12 @@
   },
   "homepage": "https://github.com/zeta-cli/tasks#readme",
   "devDependencies": {
+    "@types/jest": "^25.1.4",
     "@zeta-cli/z-cli-tools": "^1.0.2",
+    "eslint": "^6.8.0",
     "gulp": "^4.0.2"
   },
   "dependencies": {
-    "@types/jest": "^25.1.4",
     "@types/node": "^13.9.0",
     "@zeta-cli/z-microgrammar": "^1.0.1",
     "ejs": "^3.0.1",

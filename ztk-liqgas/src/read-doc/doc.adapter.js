@@ -16,8 +16,13 @@
 */
 module.exports = (data) => {
 
-  return data.map((d) => {
-    return d;
-  });
+  function getFileInfo(file) {
+    return {
+      file: file.id,
+      class: file.childs.filter(c => c.id === 'class'),
+      functions: file.childs.filter(c => c.id === 'function')
+    };
+  }
 
+  return data.map(getFileInfo);
 };

@@ -23,8 +23,8 @@ const fs = require('fs').promises;
 
 const microgrammar = {
   tokens: {
-    class: { pattern: /class\s*(\w*)\s*(:)\s*("""([^"]*)""")/, fragments: ['name', , , 'doc'] },
-    function: { pattern: /def\s*(\w*)([^:]*)[^\w]*("""([^"]*)""")/, fragments: ['name', , , 'doc'] }
+    class: { pattern: /class\s*(\w*)\s*(:)\s*("""([^"]*)""")/, fragments: ['name', null, null, 'doc'] },
+    function: { pattern: /def\s*(\w*)([^:]*)[^\w]*("""([^"]*)""")/, fragments: ['name', null, null, 'doc'] }
   }
 };
 
@@ -32,18 +32,18 @@ const task = {
 
   /**
    * Read doc from sources.
-   *
+   * 
    * @param {Object} context Execution context
-   * @param {{paths: string|Array, output?: string, verbose?: boolean}} params Parameters
+   * @param {{paths: Array, ouput: string, verbose: boolean}} params Params
    * @returns {Promise} Promise
    */
   readDocFromSource(context, params) {
-    return new Promise((resolve, reject) => {
-      const parsedFiles = [];
+    return new Promise(resolve => {
+      let parsedFiles = [];
       gulp.src(params.paths)
         .pipe(task.parsePythonDoc(parsedFiles))
         .pipe(gulp.dest('./no_ouput')).on('end', async () => {
-          // dataConverter(parsedFiles);
+          parsedFiles = docAdapter(parsedFiles);
           if (params.output) { await fs.writeFile(params.output, JSON.stringify(parsedFiles, null, 2)); }
           if (params.verbose) { console.log(JSON.stringify(parsedFiles, null, 2)); }
           resolve(parsedFiles);
@@ -51,11 +51,17 @@ const task = {
     });
   },
 
+  /**
+   * Parse python doc from file.
+   * 
+   * @param {Array} parsedFiles Parsed files
+   * @returns {Object} through2 object
+   */
   parsePythonDoc(parsedFiles) {
     return through2.obj((chunk, enc, cb) => {
       if (!chunk.isDirectory() && chunk.contents) {
         const content = chunk.contents.toString();
-        const parsedFile = micro.parser(chunk.path, content, microgrammar, null, { content: true, parent: true });
+        const parsedFile = micro.parser(chunk.path, content, microgrammar, null, { content: false, parent: true });
 
         parsedFiles.push(parsedFile);
         // var buffer = new Buffer.from(lines.join('\n').toString(), 'binary');
