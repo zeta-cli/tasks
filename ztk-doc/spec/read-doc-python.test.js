@@ -14,22 +14,20 @@
 * You should have received a copy of the GNU General Public License
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
-module.exports = data => {
 
-  function getFileInfo(file) {
-    return file.childs.reduce((p, c) => {
-      if (c.id === 'class') {
-        p.class = p.class || [];
-        p.class.push(c);
-      } else if (c.id === 'function') {
-        let source = p.class ? p.class[p.class.length - 1] : p;
-        source.functions = source.functions || [];
-        source.functions.push(c);
-      }
-      return p;
-    }, { file: file.id });
-  }
+/* eslint no-magic-numbers: off */
 
-  return data.map(getFileInfo);
-};
+const { readDoc } = require('../src/index');
 
+const VERBOSE = true;
+
+test('Python - Class name on liqgas_dao.py is LiqGasDAO', (done) => {
+
+
+  readDoc({}, { paths: `${process.cwd()}/assets/python/**/*.py`, language: 'python', verbose: VERBOSE }).then(result => {
+    // readDoc({}, { paths: `/home/ahermosi/development/python/axpo-liqgas/src/liqgas-liquidator/liqgas_liquidator/**/*.py`, language: 'python', verbose: verbose}).then(result => {
+    // expect(result[0].class[0].name).toBe('LiqGasDAO');
+    done();
+  });
+
+});

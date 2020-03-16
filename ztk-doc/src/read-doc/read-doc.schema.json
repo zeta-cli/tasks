@@ -1,0 +1,36 @@
+{
+  "name": "readDoc",
+  "description": "Read doc string from documentation",
+  "params": {
+    "type": "object",
+    "properties": {
+      "paths": {
+        "type": [
+          "string",
+          "array"
+        ],
+        "description": "Source code to documentation."
+      },
+      "language": {
+        "type": "string",
+        "enum": [
+          "python"
+        ],
+        "description": "Code language."
+      },
+      "output": {
+        "type": "string",
+        "description": "Json file ouput"
+      },
+      "verbose": {
+        "type": "boolean",
+        "description": "Show output on console"
+      }
+    },
+    "required": [
+      "paths",
+      "language"
+    ],
+    "additionalProperties": false
+  }
+}

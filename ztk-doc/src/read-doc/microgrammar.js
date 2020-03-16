@@ -14,22 +14,12 @@
 * You should have received a copy of the GNU General Public License
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
-module.exports = data => {
 
-  function getFileInfo(file) {
-    return file.childs.reduce((p, c) => {
-      if (c.id === 'class') {
-        p.class = p.class || [];
-        p.class.push(c);
-      } else if (c.id === 'function') {
-        let source = p.class ? p.class[p.class.length - 1] : p;
-        source.functions = source.functions || [];
-        source.functions.push(c);
-      }
-      return p;
-    }, { file: file.id });
+module.exports = {
+  python: {
+    tokens: {
+      class: { pattern: /class\s*(\w*)\s*(:)\s*("""([^"]*)""")/, fragments: ['name', null, null, 'doc'] },
+      function: { pattern: /def\s*(\w*)([^:]*)[^\w]*("""([^"]*)""")/, fragments: ['name', null, null, 'doc'] }
+    }
   }
-
-  return data.map(getFileInfo);
 };
-

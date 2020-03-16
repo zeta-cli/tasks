@@ -1,0 +1,42 @@
+{
+  "name": "readDoc",
+  "description": "Generate documentation from source code",
+  "params": {
+    "type": "object",
+    "properties": {
+      "paths": {
+        "type": [
+          "string",
+          "array"
+        ],
+        "description": "Source code to documentation."
+      },
+      "language": {
+        "type": "string",
+        "enum": [
+          "python"
+        ],
+        "description": "Code language."
+      },
+      "template": {
+        "type": "string",
+        "description": "Template file location"
+      },
+      "output": {
+        "type": "string",
+        "description": "File destination"
+      },
+      "verbose": {
+        "type": "boolean",
+        "description": "Show output on console"
+      }
+    },
+    "required": [
+      "paths",
+      "language",
+      "template",
+      "output"
+    ],
+    "additionalProperties": false
+  }
+}

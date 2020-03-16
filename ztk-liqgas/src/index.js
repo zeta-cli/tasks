@@ -41,12 +41,28 @@ module.exports = new ZetaPackage(
           required: ['paths'],
           additionalProperties: false
         }
+      },
+      {
+        name: 'generateDoc',
+        description: 'Generate documentation from a list of documented python files',
+        params: {
+          type: 'object',
+          properties: {
+            paths: { type: ['array', 'string'], items: { type: 'string' } },
+            template: { type: 'string', description: 'Path to template' },
+            output: { type: 'string', description: 'Path to output file' },
+            verbose: { type: 'boolean', description: 'Show info on console' }
+          },
+          required: ['paths', 'template', 'output'],
+          additionalProperties: false
+        }
       }
     ],
     doc: fs.readFileSync(path.join(__dirname, './../README.md')).toString()
   },
   {
     // jsonToModel: jsonToModel,
-    readDoc: require('./read-doc/read-doc.task').readDoc
+    readDoc: require('./read-doc/read-doc.task').readDoc,
+    generateDoc: require('./generate-doc/generate-doc.task').generateDoc
   }
 );
