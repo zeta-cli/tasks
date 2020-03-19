@@ -1,7 +1,7 @@
 {
-  "name": "@zeta-cli/ztk-liqgas",
-  "version": "1.0.1",
-  "description": "Zeta package for LiqGas",
+  "name": "@zeta-cli/ztk-doc",
+  "version": "1.0.2",
+  "description": "Zeta package for documentation utils from code",
   "main": "src/index.js",
   "scripts": {
     "test": "jest",
@@ -18,7 +18,7 @@
     "zeta",
     "tasks",
     "task",
-    "liqgas"
+    "documentation"
   ],
   "author": "Antonio Hermosilla",
   "license": "GPL-3.0",
@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/zeta-cli/tasks#readme",
   "devDependencies": {
+    "@types/node": "^13.9.1",
     "@types/jest": "^25.1.4",
     "@zeta-cli/z-cli-tools": "^1.0.2",
     "@zeta-cli/z-docxtemplater": "^1.1.1",
@@ -34,7 +35,6 @@
     "gulp": "^4.0.2"
   },
   "dependencies": {
-    "@types/node": "^13.9.1",
     "@zeta-cli/z-microgrammar": "^1.0.1",
     "ejs": "^3.0.1",
     "lodash": "^4.17.15"

@@ -38,7 +38,7 @@ const generateDocTask = {
     // Read doc from documentation
     const docs = await readDoc(context, { paths: params.paths, language: params.language, verbose: params.verbose });
 
-    console.log(JSON.stringify(docs, null, 2));
+    // console.log(JSON.stringify(docs, null, 2));
 
 
     // Generate images from tests

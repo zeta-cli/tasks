@@ -104,6 +104,7 @@ module.exports = {
 
 
     function getFileInfo(file) {
+
       if (!file.childs) { return null; }
 
       return file.childs.reduce((p, c) => {
@@ -130,6 +131,7 @@ module.exports = {
       }, { file: file.id, name: file.name });
     }
 
+    console.log(JSON.stringify(data, null, 2));
     return data.map(getFileInfo).filter(f => f);
   }
 };
